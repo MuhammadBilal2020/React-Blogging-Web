@@ -1,8 +1,11 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+
+
+// All Pages 
 import Layout from './Layout.jsx'
 import Login from './screens/Login.jsx'
 import Register from './screens/Register.jsx'
@@ -34,29 +37,25 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <ProtectedRoutes component={<Profile/>}/>
+        element: <ProtectedRoutes component={<Profile />} />
       },
       {
         path: 'myBlogs',
-        element: <ProtectedRoutes component={<MyBlogs/>}/>
+        element: <ProtectedRoutes component={<MyBlogs />} />
       },
       {
         path: 'dashboard',
-        element: <ProtectedRoutes component={<Dashboard/>}/>
+        element: <ProtectedRoutes component={<Dashboard />} />
       },
       {
-        path : "singleUser/:uid",
-        element : <SingleUser/>
+        path: "singleUser/:uid",
+        element: <SingleUser />
       },
       {
-        path : "singleUserBlogs/:uid",
-        element : <SingleUserBlogs />
+        path: "singleUserBlogs/:uid",
+        element: <SingleUserBlogs />
       }
-      
-      // {
-      //   path: 'user',
-      //   element: <ProtectedRoutes component={<SingleUser/>}/>
-      // },
+
     ]
   }
 ])
@@ -64,10 +63,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <>
-    
+
     <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+      <App />
+    </RouterProvider>
 
   </>
 

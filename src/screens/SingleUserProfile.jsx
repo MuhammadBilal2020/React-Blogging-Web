@@ -31,12 +31,12 @@ function SingleUser() {
 
   return (
     <div>
-      <h1 className='text-center text-[2rem]'>User profile</h1>
+      <h1 className='text-center  l-bg py-5 text-[2rem]'>User profile</h1>
 
       {profileData.length > 0 ? profileData.map((item, index) => (
-        <div key={index} className="mt-[5rem] flex justify-center items-center">
+        <div key={index} className="mt-[3rem] flex justify-center items-center">
           {/* Profile Card */}
-          <div className="d-gray-bg k w-[40rem]  max-w-lg shadow-lg rounded-lg overflow-hidden p-[2.6rem]">
+          <div className="l-bg w-[40rem] border-[.1rem] border-[#d8d7d7] max-w-lg shadow-lg rounded-lg overflow-hidden p-[2rem]">
             {/* Profile Image */}
            
             <div className="h-[15rem] flex justify-center items-center">
@@ -49,10 +49,10 @@ function SingleUser() {
         
             {/* Profile Info */}
             <div className="p-6 text-center">
-            <h2 className="text-2xl font-semibold l-color">{item.firstName}</h2>
+            <h2 className="text-2xl font-semibold capitalize">{item.firstName}</h2>
               <button 
                 onClick={() => myBlogs(item.uid)} 
-                className="mt-5 px-4 py-2  text-white rounded-lg l-gray-bg hover:bg-[#586155]"
+                className="mt-[3rem] px-4 py-2  text-white rounded-lg black-bg hover:bg-[#8b65f1]"
               >
                 View My Blogs
               </button>
