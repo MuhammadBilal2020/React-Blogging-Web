@@ -43,7 +43,7 @@ function SingleUser() {
               <img 
                 src={item.userPic} 
                 alt="Profile"
-                className="rounded-full h-[14rem] w-[14rem] object-contain border-4 border-white shadow-lg" 
+                className="rounded-full h-[14rem] bg-black w-[14rem] object-contain border-4 border-white shadow-lg" 
               />
             </div>
         
