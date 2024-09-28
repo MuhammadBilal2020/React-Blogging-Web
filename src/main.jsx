@@ -12,7 +12,7 @@ import Dashboard from './screens/Dashboard.jsx'
 import Profile from './screens/Profile.jsx'
 import SingleUser from './screens/SingleUserProfile.jsx'
 import SingleUserBlogs from './screens/SingleUserBlogs.jsx'
-import MyBlogs from './screens/myBlogs.jsx'
+import MyBlogs from './screens/MyBlogs.jsx'
 
 
 const router = createBrowserRouter([
