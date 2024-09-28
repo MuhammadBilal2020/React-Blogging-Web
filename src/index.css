@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #ECDFCC;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* color theme   */
+
+/* black (1E201E) */
+/* dark gray (3C3D37) */
+/* light gray(697565)  */
+/* light color (ECDFCC)  */
+
+
+
+/* black */
+.black-bg{
+background-color: #1E201E;
+}
+
+.black-color{
+  color: #1E201E ;
+}
+
+
+
+/* dark gray  */
+
+.d-gray-bg{
+  background-color: #3C3D37;
+}
+
+d-gray-color{
+ color: #3C3D37; 
+}
+
+
+
+
+/* light gray  */
+.l-gray-bg{
+  background-color: #697565;
+}
+
+l-gray-color{
+  color: #697565;
+}
+
+
+/* light  */
+
+.l-bg{
+  background-color: #ECDFCC;
+
+}
+
+.l-color{
+ color: #ECDFCC;
+
+}
+
+
+
+
+
+
