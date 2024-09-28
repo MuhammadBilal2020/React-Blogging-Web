@@ -92,14 +92,15 @@ function Register() {
   return (
     <>
       <div className="reg-form-style   flex items-center justify-center text-center">
-        <form id="forms" onSubmit={signUpUserAndSaveUserData} className='black-bg py-[1rem] px-[1.7rem] mt-5 p-[2rem] rounded-xl'>
-          <h1 className='text-center l-color text-[2rem]'>Register</h1>
+        <form id="forms" onSubmit={signUpUserAndSaveUserData} className='shadow-md l-bg   py-[1rem] px-[1.5rem] rounded-xl mt-[3rem] text-center'>
+          <h1 className='text-center  text-[2rem]'>Register</h1>
 
           {/* first Name  */}
           <input
             type="text"
             ref={firstName}
-            className="py-[.4rem] w-[20rem] block px-[.6rem] mt-[1.4rem] text-center"
+            required
+            className="py-[.4rem] border w-[20rem] block px-[.6rem] mt-[1rem] text-center"
             placeholder=" First Name"
           />
 
@@ -107,7 +108,8 @@ function Register() {
           <input
             type="text"
             ref={lastName}
-            className="py-[.4rem] w-[20rem] px-[.6rem] block mt-[1.4rem] text-center"
+            required
+            className="py-[.4rem] border w-[20rem] px-[.6rem] block mt-[1rem] text-center"
             placeholder=" Last Name"
           />
 
@@ -115,33 +117,35 @@ function Register() {
           <input
             type="email"
             ref={email}
-            className="py-[.4rem] w-[20rem] px-[.6rem] block mt-[1.4rem] text-center"
+            required
+            className="py-[.4rem] border w-[20rem] px-[.6rem] block mt-[1rem] text-center"
             placeholder=" Email"
           />
 
           {/* Password  */}
           <input
             type="password"
-            className="py-[.4rem]  w-[20rem] px-[.6rem] block mt-[1.4rem] text-center"
+            className="py-[.4rem] border  w-[20rem] px-[.6rem] block mt-[1rem] text-center"
             ref={password}
             placeholder=" Password"
+            required
           />
 
           <input
             type="file"
             required
             ref={profileImage}
-            className="py-[.3rem] bg-white w-[20rem] block px-[.6rem] mt-[1.4rem] text-center"
+            className="py-[.3rem] border bg-white w-[20rem] block px-[.6rem] mt-[1rem] text-center"
           />
 
           {/* Photo  */}
-          <Link to="/" className='block mt-[1.4rem] l-color hover:text-[#697565] text-[1.2rem]'>!Register first , if not a user </Link>
+          <Link to="/" className='block mt-[1rem]  hover:text-[#697565] text-[1.2rem]'>already register, then login </Link>
           <br />
 
           {/* Register button  */}
           <button
             type="submit"
-            className="logins hover:bg-[#3C3D37]  py-[.5rem] rounded-md   w-[6rem] px-[.8rem] l-color l-gray-bg"
+            className="logins black-bg hover:bg-[#8b65f1] py-[.5rem] rounded-md   w-[6rem] px-[.8rem] l-color "
           >
             Register
           </button>
