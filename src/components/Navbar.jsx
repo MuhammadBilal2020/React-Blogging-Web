@@ -15,9 +15,9 @@ function Navbar() {
      onAuthStateChanged(auth, async (user) => {
       if (user) {
         const uid = user.uid;
-        setU(uid);  // Set the UID when the user is authenticated
+        setU(uid);  
       } else {
-        setU(null);  // No user is authenticated
+        setU(null);  
         
       }
     });
