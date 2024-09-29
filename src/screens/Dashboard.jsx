@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-import { collection, query, where, getDocs, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import { collection, query, where, getDocs, addDoc, deleteDoc, doc  ,updateDoc  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebaseConfig/firebaseMethod';
@@ -123,6 +123,40 @@ function Dashboard() {
   }
 
 
+  const updatedata = async (id) => {
+    const updatedTitle = prompt("Enter Updated Title");
+    const updateddescription = prompt("Enter Updated Description");
+  
+    if (updatedTitle && updateddescription) {
+      const blogRef = doc(db, "Blogs", id);
+  
+      await updateDoc(blogRef, {
+        title: updatedTitle,
+        description: updateddescription
+      });
+  
+      // Update the blog in the local state after editing
+      const updatedBlogs = blogArr.map(blog =>
+        blog.id === id ? { ...blog, title: updatedTitle, description: updateddescription } : blog
+      );
+      setBlogArr(updatedBlogs);
+  
+      Swal.fire({
+        title: "Success!",
+        text: "Blog updated successfully.",
+        icon: "success"
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Title and description are required!",
+        icon: "error"
+      });
+    }
+  };
+  
+
+
 
   // JSX 
   return (
@@ -170,6 +204,9 @@ function Dashboard() {
                 <button
                   onClick={() => deleteBlog(index, item.id)}
                   className='mt-[1.5rem]   black-color hover:text-[#9f81f3] font-bold w-[4rem] rounded-lg '>delete</button>
+                  <button
+                  onClick={() => updatedata( item.id)}
+                  className='mt-[1.5rem]   black-color hover:text-[#9f81f3] font-bold w-[4rem] rounded-lg '>edit</button>
               </div>
             </div>
 

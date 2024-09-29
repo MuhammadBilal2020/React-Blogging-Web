@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         path: "singleUserBlogs/:uid",
         element: <SingleUserBlogs />
       }
-
+ 
     ]
   }
 ])
