@@ -57,14 +57,14 @@ function Home() {
                 <img src={item.pic} className='h-[50px] w-[50px] object-contain rounded-full mr-4 shadow-lg shadow-slate-800' alt="Profile" />
               </button>
               <div>
-                <p className='text-[2rem] font-semibold text-gray-800'> {item.name}</p>
+                <p className='text-[2rem] font-semibold capitalize text-gray-800'> {item.name}</p>
               </div>
             </div>
 
             {/* title and description  */}
             <div className='p-4 text-left'>
-              <h2 className='text-[1.5rem] mt-3 font-[600] text-black'><span className='font-bold '>Title:</span> {item.title}</h2>
-              <p className='text-[1.2rem]  mt-3'><span className='font-semibold'>Description:</span> {item.description}</p>
+              <h2 className='text-[1.5rem] mt-3 font-[600] capitalize text-black'> {item.title}</h2>
+              <p className='text-[1.2rem]  mt-3'> {item.description}</p>
 
             </div>
           </div>
