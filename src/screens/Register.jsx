@@ -1,64 +1,42 @@
-import React, { useRef } from 'react'
-import Navbar from '../components/Navbar'
-import { Link, useNavigate } from 'react-router-dom'
-import { signOut } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+import React, { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
-
 import { auth, db } from '../firebaseConfig/firebaseMethod';
 import Swal from 'sweetalert2';
 
-
 function Register() {
-
-  let firstName = useRef()
-  let lastName = useRef()
-  let email = useRef()
-  let password = useRef()
-  let profileImage = useRef()
-
-  let navigate = useNavigate()
+  let firstName = useRef();
+  let lastName = useRef();
+  let email = useRef();
+  let password = useRef();
+  let profileImage = useRef();
+  let navigate = useNavigate();
   const storage = getStorage();
 
-  //  make image url function 
+  // Function to upload image and return URL
   async function showUrl(files) {
     const storageRef = ref(storage, email.current.value);
-
     try {
-      console.log(files);
       const uploadImg = await uploadBytes(storageRef, files);
-      console.log(uploadImg);
       const url = await getDownloadURL(storageRef);
-      console.log(url);
       return url;
-    }
-
-    catch (error) {
+    } catch (error) {
       console.error(error);
-
     }
-
   }
 
-
-  // register function 
+  // Register function
   async function signUpUserAndSaveUserData(event) {
     event.preventDefault();
-
     const profilePic = await showUrl(profileImage.current.files[0]);
-    console.log(profilePic);
-
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
-
       const user = userCredential.user;
-      console.log(user.uid);
 
       // Add user data to Firestore
-      const docRef = await addDoc(collection(db, "users"), {
+      await addDoc(collection(db, "users"), {
         firstName: firstName.current.value,
         lastName: lastName.current.value,
         email: email.current.value,
@@ -68,95 +46,87 @@ function Register() {
       });
 
       Swal.fire({
-        
-        text: "You are register",
+        text: "You are registered",
         icon: "success"
       }).then(() => {
-       
         window.location.reload();
       });
-      // signout after register 
-      await signOut(auth);
-      // Redirect to login page
-      navigate("/login");
-    }
 
-    catch (e) {
+      // Sign out after registration
+      await signOut(auth);
+      navigate("/login");
+    } catch (e) {
       console.log(e);
     }
-
   }
 
-
-// JSX 
+  // JSX 
   return (
     <>
-      <div className="reg-form-style   flex items-center justify-center text-center">
-        <form id="forms" onSubmit={signUpUserAndSaveUserData} className='shadow-md l-bg   py-[1rem] px-[1.5rem] rounded-xl mt-[3rem] text-center'>
-          <h1 className='text-center  text-[2rem]'>Register</h1>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <form id="forms" onSubmit={signUpUserAndSaveUserData} className='shadow-md l-bg py-6 px-4 rounded-xl mt-10 max-w-sm w-full text-center'>
+          <h1 className='text-center text-2xl mb-4'>Register</h1>
 
-          {/* first Name  */}
+          {/* First Name */}
           <input
             type="text"
             ref={firstName}
             required
-            className="py-[.4rem] border w-[20rem] block px-[.6rem] mt-[1rem] text-center"
-            placeholder=" First Name"
+            className="py-2 border w-full block px-3 mt-2 text-center rounded-md"
+            placeholder="First Name"
           />
 
-          {/* Last Name  */}
+          {/* Last Name */}
           <input
             type="text"
             ref={lastName}
             required
-            className="py-[.4rem] border w-[20rem] px-[.6rem] block mt-[1rem] text-center"
-            placeholder=" Last Name"
+            className="py-2 border w-full block px-3 mt-2 text-center rounded-md"
+            placeholder="Last Name"
           />
 
-          {/* Email  */}
+          {/* Email */}
           <input
             type="email"
             ref={email}
             required
-            className="py-[.4rem] border w-[20rem] px-[.6rem] block mt-[1rem] text-center"
-            placeholder=" Email"
+            className="py-2 border w-full block px-3 mt-2 text-center rounded-md"
+            placeholder="Email"
           />
 
-          {/* Password  */}
+          {/* Password */}
           <input
             type="password"
-            className="py-[.4rem] border  w-[20rem] px-[.6rem] block mt-[1rem] text-center"
             ref={password}
-            placeholder=" Password"
             required
+            className="py-2 border w-full block px-3 mt-2 text-center rounded-md"
+            placeholder="Password"
           />
 
+          {/* Profile Image */}
           <input
             type="file"
-            required
             ref={profileImage}
-            className="py-[.3rem] border bg-white w-[20rem] block px-[.6rem] mt-[1rem] text-center"
+            required
+            className="py-2 border bg-white w-full block px-3 mt-2 text-center rounded-md"
           />
 
-          {/* Photo  */}
-          <Link to="/" className='block mt-[1rem]  hover:text-[#697565] text-[1.2rem]'>already register, then login </Link>
-          <br />
+          {/* Already registered? */}
+          <Link to="/" className='block mt-4 hover:text-[#697565] text-lg'>
+            Already registered? Login
+          </Link>
 
-          {/* Register button  */}
+          {/* Register Button */}
           <button
             type="submit"
-            className="logins black-bg hover:bg-[#8b65f1] py-[.5rem] rounded-md   w-[6rem] px-[.8rem] l-color "
+            className="py-2 rounded-md l-color black-bg hover:bg-[#8b65f1] w-full mt-4"
           >
             Register
           </button>
-          <br /> <br />
-
         </form>
       </div>
-
     </>
-
-  )
+  );
 }
 
-export default Register
+export default Register;

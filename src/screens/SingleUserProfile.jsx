@@ -15,7 +15,6 @@ function SingleUser() {
       const usersSnapshot = await getDocs(q);
       let userOne = [];
       usersSnapshot.forEach((doc) => {
-        console.log(doc.data());
         userOne.push(doc.data()); // Collect user data
       });
       setProfileData(userOne);
@@ -31,14 +30,13 @@ function SingleUser() {
 
   return (
     <div>
-      <h1 className='text-center  l-bg py-5 text-[2rem]'>User profile</h1>
+      <h1 className='text-center l-bg py-5 text-[2rem]'>User Profile</h1>
 
       {profileData.length > 0 ? profileData.map((item, index) => (
-        <div key={index} className="mt-[3rem] flex justify-center items-center">
+        <div key={index} className="mt-[2rem] flex justify-center items-center">
           {/* Profile Card */}
-          <div className="l-bg w-[40rem] border-[.1rem] border-[#d8d7d7] max-w-lg shadow-lg rounded-lg overflow-hidden p-[2rem]">
+          <div className="l-bg w-[90%] md:w-[40rem] border-[.1rem] border-[#d8d7d7] max-w-lg shadow-lg rounded-lg overflow-hidden p-[2rem]">
             {/* Profile Image */}
-           
             <div className="h-[15rem] flex justify-center items-center">
               <img 
                 src={item.userPic} 
@@ -46,13 +44,13 @@ function SingleUser() {
                 className="rounded-full h-[14rem] bg-black w-[14rem] object-contain border-4 border-white shadow-lg" 
               />
             </div>
-        
+
             {/* Profile Info */}
             <div className="p-6 text-center">
-            <h2 className="text-2xl font-semibold capitalize">{item.firstName}</h2>
+              <h2 className="text-2xl font-semibold capitalize">{item.firstName}</h2>
               <button 
                 onClick={() => myBlogs(item.uid)} 
-                className="mt-[3rem] px-4 py-2  text-white rounded-lg black-bg hover:bg-[#8b65f1]"
+                className="mt-[3rem] px-4 py-2 text-white rounded-lg black-bg hover:bg-[#8b65f1]"
               >
                 View My Blogs
               </button>
@@ -60,7 +58,7 @@ function SingleUser() {
           </div>
         </div>
       )) : (
-        <h1 className='text-center text-[1.5rem] mt-8'>loading...</h1>
+        <h1 className='text-center text-[1.5rem] mt-8'>Loading...</h1>
       )}
     </div>
   );
