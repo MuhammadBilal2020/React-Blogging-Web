@@ -35,8 +35,8 @@ function Login() {
   // JSX 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="reg-form-style shadow-md l-bg py-6 px-4 rounded-xl mt-10 max-w-sm w-full">
+      <div className="flex  justify-center  bg-gray-100">
+        <div className="reg-form-style shadow-md l-bg py-6 px-4 rounded-xl mt-[8rem] max-w-sm w-full">
           <form id="forms" onSubmit={signInUser}>
             <h1 className='text-center text-2xl mb-4'>Login</h1>
 

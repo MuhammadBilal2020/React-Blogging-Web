@@ -119,12 +119,12 @@ function Dashboard() {
         <form className="form" onSubmit={addBlog}>
           <input
             type="text"
-            className="text-lg border border-gray-400 p-3 w-full rounded-lg mx-auto mt-6"
+            className="text-lg border text-[black] border-gray-400 p-3 w-full rounded-lg mx-auto mt-6"
             ref={title}
             placeholder="Title"
             name="title" />
           <textarea
-            className="mt-6 border border-gray-400 text-lg w-full rounded-lg block mx-auto p-3"
+            className="mt-6 border border-gray-400 text-[black] text-lg w-full rounded-lg block mx-auto p-3"
             placeholder="Description"
             name="description"
             ref={description}

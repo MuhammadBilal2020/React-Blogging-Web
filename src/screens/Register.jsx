@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js"; // Import setDoc and doc
 import { auth, db } from '../firebaseConfig/firebaseMethod';
 import Swal from 'sweetalert2';
 
